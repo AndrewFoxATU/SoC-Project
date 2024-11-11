@@ -1,1 +1,1 @@
-# fpga-vga-verilog
+# SoC-Project
