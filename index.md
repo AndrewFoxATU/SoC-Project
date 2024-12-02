@@ -21,8 +21,8 @@ The template code was a simple colour cycle that showed 8 different colours one 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/sources.png">
 
 
-The VGA timing logic made sure the display worked at 60 Hz and matched the 640x480 resolution. By changing (`clk_out1`) Output Freq requested in (`u_clock`) to 25.2MHz this allows the colours to change smoothly on the screen showing how to use basic timing and state machines to control a VGA display.
-(talk about the timings change)
+The VGA timing logic made sure the display worked at 60 Hz and matched the 640x480 resolution. By changing (`clk_out1`) Output Freq Requested in (`u_clock`) to 25.2MHz this allows the colours to change smoothly on the screen showing how to use basic timing and state machines to control a VGA display.
+Below are the equations I did to find the Pixel Clock
 ```
 Pixel Clock = Total Pixels Per Frame x Refresh Rate
 
@@ -31,7 +31,7 @@ For 640x480 at 60 Hz:
 Total pixels per frame = 800 (horizontal total) x 525 (vertical total) = 420,000
 Pixel clock = 420,000 x 60 Hz =25,200,000Hz = 25.2 MHz
 ```
-
+<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/clock.png">
 ### Simulation
 I simulated the provided template using the supplied Verilog testbench. The simulation outputs matched the expected timing sequences confirming the integrity of the design and that it was ready for synthesis.
 
@@ -58,7 +58,7 @@ I began by adding a new colour **GREY** to the existing colour cycle. During thi
 (TALK ABOUT 12 colour cycle gradiaent)
 
 My initial attempt at creating a 12 colour cycle revealed a problem: the design kept resetting after the 8th colour. After debugging I realized that the state register was only 2 bits wide allowing for only 8 states. To fix this I expanded the register to 3 bits (`reg[3:0] state, state_next;`) which allowed for up to 12 states. This change successfully enabled a full 12-colour cycle without resets.
-
+(talk about parameter COUNT_TO = 32'b1 << 23) being changed)
 Here’s the relevant code snippet:
 
 ```verilog
