@@ -94,7 +94,6 @@ Synthesising the modified design involved generating a new bitstream for the Bas
 ### Demonstration
 Here is the final demonstration of my unique 12-colour VGA design running on the Basys3 board:
 
-(hardware demonstration photo)
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/IMG_8215-ezgif.com-video-to-gif-converter.gif">
 
 ### Conclusion
