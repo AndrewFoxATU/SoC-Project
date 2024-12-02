@@ -95,6 +95,7 @@ Synthesising the modified design involved generating a new bitstream for the Bas
 Here is the final demonstration of my unique 12-colour VGA design running on the Basys3 board:
 
 (hardware demonstration photo)
+<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/IMG_8215-ezgif.com-video-to-gif-converter.gif">
 
 ### Conclusion
 This project has been a rewarding learning experience. Debugging and solving challenges such as expanding the state machine developing my understanding of Verilog and hardware design principles. I look forward to further exploring SoC design and FPGA programming.
