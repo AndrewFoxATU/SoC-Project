@@ -12,10 +12,13 @@ Welcome to my FPGA VGA Driver Project blog! Follow my progress as I learn, solve
 The project began with setting up Vivado and configuring the Basys3 development board for FPGA programming. I moved the necessary files from OneDrive to a local directory due to access issues and successfully set up my workspace in `C:\Temp`. 
 (TALK ABOUT WHY C\temp was needed)
 
+<img src="https://github.com/AndrewFoxATU/SoC-Project/blob/main/docs/assets/images/overview1.png">
 The provided template code included VGA timing logic for a 640x480 resolution display and a testbench for initial verification of the design. This provided a solid foundation for development.
 
 ### Template Code
 The template code was a simple colour cycle that showed 8 different colours one after another on the VGA display. It used a state machine implemented in Verilog with each state representing a specific colour. The RGB values for these colours were predefined in the code.
+
+<img src="https://github.com/AndrewFoxATU/SoC-Project/blob/main/docs/assets/images/sources.png">
 
 
 The VGA timing logic made sure the display worked at 60 Hz and matched the 640x480 resolution. This allowed the colours to change smoothly on the screen showing how to use basic timing and state machines to control a VGA display.
@@ -24,12 +27,12 @@ The VGA timing logic made sure the display worked at 60 Hz and matched the 640x4
 ### Simulation
 I simulated the provided template using the supplied Verilog testbench. The simulation outputs matched the expected timing sequences confirming the integrity of the design and that it was ready for synthesis.
 
-(simulation screenshot)
+<img src="https://github.com/AndrewFoxATU/SoC-Project/blob/main/docs/assets/images/firstsim.png">
 
 ### Synthesis
 The next step was synthesizing the template in Vivado. The synthesis and implementation process ran without issues and I generated the bitstream file. I successfully loaded this onto the Basys3 board confirming the example design displayed correctly on the VGA monitor.
 
-(synthesis and hardware demonstration screenshots)
+<img src="https://github.com/AndrewFoxATU/SoC-Project/blob/main/docs/assets/images/ezgif.com-video-to-gif-converter.gif">
 
 ### Demonstration
 The template successfully displayed the example colour cycle on the monitor during the demonstration phase. This provided a great starting point for customizing and enhancing the design.
@@ -56,7 +59,11 @@ reg [3:0] state, state_next;
 
 always @* begin
     case (state)
-        // Define all 12 states with unique RGB combinations
+        //Define all 12 states with unique RGB combinations
+        COLOUR: begin
+            colour <= 12'bXxXxXxXxXxXx;  // 12 Xs represent RGB 12bit binary 
+            if(count == COUNT_TO) state_next = NEXT_COLOUR;
+        end
     endcase
 end
 
@@ -66,7 +73,7 @@ end
 ### Simulation
 The updated design was simulated using the provided testbench. The waveform confirmed smooth transitions between all 12 colours, validating the changes I made to the state machine. Debugging during this phase ensured that the design was error-free before proceeding to synthesis.
 
-(Add updated simulation screenshots here)
+<img src="https://github.com/AndrewFoxATU/SoC-Project/blob/main/docs/assets/images/simulation.png">
 
 ### Synthesis
 
