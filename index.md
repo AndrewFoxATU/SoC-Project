@@ -93,7 +93,7 @@ The updated design was simulated using the provided testbench. The waveform conf
 ### Synthesis
 
 Synthesising the modified design involved generating a new bitstream for the Basys3 board. The synthesis process ran successfully and I implemented the design onto the hardware. The extended 12-colour cycle displayed as intended.
-As the (`blue_reg`) is not used in my design it is cut off from the rest of the Schematic
+As the (`vgaBLUE`) is not used in my design it is cut off from the rest of the Schematic
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/schematic.png">
 
 ### Demonstration
