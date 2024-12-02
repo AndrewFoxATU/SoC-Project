@@ -21,8 +21,16 @@ The template code was a simple colour cycle that showed 8 different colours one 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/sources.png">
 
 
-The VGA timing logic made sure the display worked at 60 Hz and matched the 640x480 resolution. This allowed the colours to change smoothly on the screen showing how to use basic timing and state machines to control a VGA display.
+The VGA timing logic made sure the display worked at 60 Hz and matched the 640x480 resolution. By changing (`clk_out1`) Output Freq requested in (`u_clock`) to 25.2MHz this allows the colours to change smoothly on the screen showing how to use basic timing and state machines to control a VGA display.
 (talk about the timings change)
+```
+Pixel Clock = Total Pixels Per Frame x Refresh Rate
+
+For 640x480 at 60 Hz:
+
+Total pixels per frame = 800 (horizontal total) x 525 (vertical total) = 420,000
+Pixel clock = 420,000 x 60 Hz =25,200,000Hz = 25.2 MHz
+```
 
 ### Simulation
 I simulated the provided template using the supplied Verilog testbench. The simulation outputs matched the expected timing sequences confirming the integrity of the design and that it was ready for synthesis.
@@ -54,6 +62,10 @@ My initial attempt at creating a 12 colour cycle revealed a problem: the design 
 Here’s the relevant code snippet:
 
 ```verilog
+// Updated COUNT_TO
+module ColourCycle #(
+parameter COUNT_TO = 32'b1 << 23)  // changed the 26 to 23 to make the cycle faster.
+
 // Updated state machine for 12 colours
 reg [3:0] state, state_next;
 
