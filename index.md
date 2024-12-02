@@ -57,6 +57,8 @@ I began by adding a new colour **GREY** to the existing colour cycle. During thi
 (talk about the RGB BINARY right to left)
 
 (TALK ABOUT 12 colour cycle red-to-green gradiaent)
+(parameter Bright_Red = 0, Vermilion = 1, Orange_Red = 2, Bright_Orange = 3, Golden_Orange = 4, Mustard_Yellow = 5, Goldenrod = 6, Olive_Green = 7, Lime_Yellow = 8, Bright_Lime_Green = 9, Electric_Green = 10, Pure_Green = 11; )
+
 
 My initial attempt at creating a 12 colour cycle revealed a problem: the design kept resetting after the 8th colour. After debugging I realized that the state register was only 2 bits wide allowing for only 8 states. To fix this I expanded the register to 3 bits (`reg[3:0] state, state_next;`) which allowed for up to 12 states. This change successfully enabled a full 12-colour cycle without resets.
 
