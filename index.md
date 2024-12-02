@@ -10,7 +10,7 @@ Welcome to my FPGA VGA Driver Project blog! Follow my progress as I learn, solve
 ## Template VGA Design
 ### Project Set-Up
 The project began with setting up Vivado and configuring the Basys3 development board for FPGA programming. I moved the necessary files from OneDrive to a local directory due to access issues and successfully set up my workspace in `C:\Temp`. 
-(TALK ABOUT WHY C\temp was needed)
+While using `C:\Temp` I had to keep in mind that this directory might get wiped each week so uploading the changed code back to OneDrive each week was necessary.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/overview1.png">
 The provided template code included VGA timing logic for a 640x480 resolution display and a testbench for initial verification of the design. This provided a solid foundation for development.
@@ -39,12 +39,13 @@ I simulated the provided template using the supplied Verilog testbench. The simu
 
 ### Synthesis
 The next step was synthesizing the template in Vivado. The synthesis and implementation process ran without issues and I generated the bitstream file. I successfully loaded this onto the Basys3 board confirming the example design displayed correctly on the VGA monitor.
+<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/Screenshot%202024-12-02%20173115.png">
 
-<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/ezgif.com-video-to-gif-converter.gif">
 
 ### Demonstration
 The template successfully displayed the example colour cycle on the monitor during the demonstration phase. This provided a great starting point for customizing and enhancing the design.
 
+<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/ezgif.com-video-to-gif-converter.gif">
 ---
 ## My VGA Design Edit
 ### Introduction
@@ -53,12 +54,14 @@ My first objective was to modify the design to include an extended colour cycle.
 ### Code Adaptation
 I began by adding a new colour **GREY** to the existing colour cycle. During this process I discovered that RGB values in Verilog are represented from right to left in binary which was a key insight for the adaptations.
 
-(talk about the RGB BINARY)
+(talk about the RGB BINARY right to left)
 
-(TALK ABOUT 12 colour cycle gradiaent)
+(TALK ABOUT 12 colour cycle red-to-green gradiaent)
 
 My initial attempt at creating a 12 colour cycle revealed a problem: the design kept resetting after the 8th colour. After debugging I realized that the state register was only 2 bits wide allowing for only 8 states. To fix this I expanded the register to 3 bits (`reg[3:0] state, state_next;`) which allowed for up to 12 states. This change successfully enabled a full 12-colour cycle without resets.
+
 (talk about parameter COUNT_TO = 32'b1 << 23) being changed)
+
 Here’s the relevant code snippet:
 
 ```verilog
@@ -90,9 +93,11 @@ The updated design was simulated using the provided testbench. The waveform conf
 ### Synthesis
 
 Synthesising the modified design involved generating a new bitstream for the Basys3 board. The synthesis process ran successfully and I implemented the design onto the hardware. The extended 12-colour cycle displayed as intended.
+As the (`blue_reg`) is not used in my design it is cut off from the rest of the Schematic
+<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/schematic.png">
 
 ### Demonstration
-Here is the final demonstration of my unique 12-colour VGA design running on the Basys3 board:
+Here is the final demonstration of my unique 12-colour red-to-green  VGA design running on the Basys3 board:
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/IMG_8215-ezgif.com-video-to-gif-converter.gif">
 
