@@ -73,7 +73,7 @@ end
 ### Simulation
 The updated design was simulated using the provided testbench. The waveform confirmed smooth transitions between all 12 colours, validating the changes I made to the state machine. Debugging during this phase ensured that the design was error-free before proceeding to synthesis.
 
-<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/blob/main/docs/assets/images/simulation.png">
+<img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/simulation.png">
 
 ### Synthesis
 
