@@ -109,8 +109,10 @@ This project has been a rewarding learning experience. Debugging and solving cha
 
 ### **References**
 [1] M. Lynch, "Provided template code and System on Chip Design and Verification classes," lecture, ATU, Galway, 2024.
+
 [2] OpenAI, "ChatGPT: Language model for debugging code," Online. Available: https://chat.openai.com/. [Accessed: Nov 2024].
 
+[3] Stack Overflow, "How do VGA control signals work in Verilog HDL?," Online. Available: https://stackoverflow.com/questions/34523091/how-do-vga-control-signals-work-in-verilog-hdl. [Accessed: Nov 2024].
 
 
 
