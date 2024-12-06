@@ -47,23 +47,23 @@ The next step was synthesizing the template in Vivado. The synthesis and impleme
 The template successfully displayed the example colour cycle on the monitor during the demonstration phase. This provided a great starting point for customizing and enhancing the design.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/ezgif.com-video-to-gif-converter.gif">
+
 ---
-## **My VGA Design Edit**
+
+## My VGA Design Edit
 ### **Introduction**
 My first objective was to modify the design to include an extended colour cycle. This required debugging gaining an understand of the sample code and adapting the state machine in the code to support more colours.
 
 ### **Code Adaptation**
-I began by adding a new colour **GREY** to the existing colour cycle. During this process I discovered that RGB values in Verilog are represented from right to left in binary which was a key insight for the adaptations.
+I began by adding a new colour **GREY** to the existing colour cycle. During this process I discovered that RGB values in Verilog are represented from right to left in binary. This means that the least significant bits represents red, followed by green and then blue Understanding this order was important for correctly setting the RGB values for the new colours. To extend the colour cycle I decided to implement a 12-colour gradient moving from red to green. These colours are defined using parameters for clarity in the code:
+```verilog
+parameter Bright_Red = 0, Vermilion = 1, Orange_Red = 2, Bright_Orange = 3, Golden_Orange = 4, Mustard_Yellow = 5, Goldenrod = 6, Olive_Green = 7, Lime_Yellow = 8, Bright_Lime_Green = 9, Electric_Green = 10, Pure_Green = 11;
+```
+Each colour smoothly transitions from one shade to the next creating a visually appealing gradient. This allowed me to learn how to work with parameters in Verilog to manage complex designs.
 
-(talk about the RGB BINARY right to left)
+My initial attempt at creating a 12 colour cycle revealed a problem: the design would reset after the 8th colour each time. After debugging I realized that the state register was only 2 bits wide allowing for only 8 states. To fix this I expanded the register to 3 bits (`reg[3:0] state, state_next;`) which allowed for up to 12 states. This change successfully enabled a full 12-colour cycle without resets.
 
-(TALK ABOUT 12 colour cycle red-to-green gradiaent)
-(parameter Bright_Red = 0, Vermilion = 1, Orange_Red = 2, Bright_Orange = 3, Golden_Orange = 4, Mustard_Yellow = 5, Goldenrod = 6, Olive_Green = 7, Lime_Yellow = 8, Bright_Lime_Green = 9, Electric_Green = 10, Pure_Green = 11; )
-
-
-My initial attempt at creating a 12 colour cycle revealed a problem: the design kept resetting after the 8th colour. After debugging I realized that the state register was only 2 bits wide allowing for only 8 states. To fix this I expanded the register to 3 bits (`reg[3:0] state, state_next;`) which allowed for up to 12 states. This change successfully enabled a full 12-colour cycle without resets.
-
-(talk about parameter COUNT_TO = 32'b1 << 23) being changed)
+To adjust the speed of the colour transitions I modified the (`COUNT_TO`) parameter which determines the delay for state changes. Originally set to (`32'b1 << 26`) I reduced it to (`32'b1 << 23`). This reduced the delay and made the colour changes faster making it appear that the colours are smoothly shifting along a gradient.
 
 Here’s the relevant code snippet:
 
@@ -89,7 +89,7 @@ end
 
 
 ### **Simulation**
-The updated design was simulated using the provided testbench. The waveform confirmed smooth transitions between all 12 colours, validating the changes I made to the state machine. Debugging during this phase ensured that the design was error-free before proceeding to synthesis.
+The updated design was simulated using the provided testbench. The waveform confirmed a smooth transitions between all 12 colours validating the changes I made to the state machine. Debugging during this phase ensured that the design was error-free before proceeding to synthesis.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/simulation.png">
 
