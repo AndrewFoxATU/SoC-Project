@@ -107,6 +107,10 @@ Here is the final demonstration of my unique 12-colour red-to-green  VGA design 
 ### **Conclusion**
 This project has been a rewarding learning experience. Debugging and solving challenges such as expanding the state machine developing my understanding of Verilog and hardware design principles. I look forward to further exploring SoC design and FPGA programming.
 
+### **References**
+[1] M. Lynch, "Provided template code and System on Chip Design and Verification classes," lecture, ATU, Galway, 2024.
+[2] OpenAI, "ChatGPT: Language model for debugging code," Online. Available: https://chat.openai.com/. [Accessed: Nov 2024].
+
 
 
 
