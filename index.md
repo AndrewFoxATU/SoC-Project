@@ -4,6 +4,7 @@ title: FPGA VGA Driver Project
 tags: fpga vga verilog
 categories: demo
 ---
+# FOGA VGA Driver Project by Andrew Fox
 
 Welcome to my FPGA VGA Driver Project blog! Follow my progress as I learn, solve challenges and adapt a Verilog-based VGA driver for the Basys3 development board.
 
