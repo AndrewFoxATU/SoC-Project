@@ -8,15 +8,15 @@ categories: demo
 
 Welcome to my FPGA VGA Driver Project blog! Follow my progress as I learn, solve challenges and adapt a Verilog-based VGA driver for the Basys3 development board.
 
-## Template VGA Design
-### Project Set-Up
+## **Template VGA Design**
+### **Project Set-Up**
 The project began with setting up Vivado and configuring the Basys3 development board for FPGA programming. I moved the necessary files from OneDrive to a local directory due to access issues and successfully set up my workspace in `C:\Temp`. 
 While using `C:\Temp` I had to keep in mind that this directory might get wiped each week so uploading the changed code back to OneDrive each week was necessary.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/overview1.png">
 The provided template code included VGA timing logic for a 640x480 resolution display and a testbench for initial verification of the design. This provided a solid foundation for development.
 
-### Template Code
+### **Template Code**
 The template code was a simple colour cycle that showed 8 different colours one after another on the VGA display. It used a state machine implemented in Verilog with each state representing a specific colour. The RGB values for these colours were predefined in the code.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/sources.png">
@@ -33,26 +33,26 @@ Total pixels per frame = 800 (horizontal total) x 525 (vertical total) = 420,0
 Pixel clock = 420,000 x 60 Hz =25,200,000Hz = 25.2 MHz
 ```
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/clock.png">
-### Simulation
+### **Simulation**
 I simulated the provided template using the supplied Verilog testbench. The simulation outputs matched the expected timing sequences confirming the integrity of the design and that it was ready for synthesis.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/firstsim.png">
 
-### Synthesis
+### **Synthesis**
 The next step was synthesizing the template in Vivado. The synthesis and implementation process ran without issues and I generated the bitstream file. I successfully loaded this onto the Basys3 board confirming the example design displayed correctly on the VGA monitor.
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/Screenshot%202024-12-02%20173115.png">
 
 
-### Demonstration
+### **Demonstration**
 The template successfully displayed the example colour cycle on the monitor during the demonstration phase. This provided a great starting point for customizing and enhancing the design.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/ezgif.com-video-to-gif-converter.gif">
 ---
-## My VGA Design Edit
-### Introduction
+## **My VGA Design Edit**
+### **Introduction**
 My first objective was to modify the design to include an extended colour cycle. This required debugging gaining an understand of the sample code and adapting the state machine in the code to support more colours.
 
-### Code Adaptation
+### **Code Adaptation**
 I began by adding a new colour **GREY** to the existing colour cycle. During this process I discovered that RGB values in Verilog are represented from right to left in binary which was a key insight for the adaptations.
 
 (talk about the RGB BINARY right to left)
@@ -88,23 +88,23 @@ end
 ```
 
 
-### Simulation
+### **Simulation**
 The updated design was simulated using the provided testbench. The waveform confirmed smooth transitions between all 12 colours, validating the changes I made to the state machine. Debugging during this phase ensured that the design was error-free before proceeding to synthesis.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/simulation.png">
 
-### Synthesis
+### **Synthesis**
 
 Synthesising the modified design involved generating a new bitstream for the Basys3 board. The synthesis process ran successfully and I implemented the design onto the hardware. The extended 12-colour cycle displayed as intended.
 As the (`vgaBLUE`) is not used in my design it is cut off from the rest of the Schematic
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/schematic.png">
 
-### Demonstration
+### **Demonstration**
 Here is the final demonstration of my unique 12-colour red-to-green  VGA design running on the Basys3 board:
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/IMG_8215-ezgif.com-video-to-gif-converter.gif">
 
-### Conclusion
+### **Conclusion**
 This project has been a rewarding learning experience. Debugging and solving challenges such as expanding the state machine developing my understanding of Verilog and hardware design principles. I look forward to further exploring SoC design and FPGA programming.
 
 
