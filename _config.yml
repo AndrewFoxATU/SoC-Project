@@ -2,8 +2,7 @@
 title: System-on-Chip Design & Verification
 author:
   name: Andrew Fox
-  email: your-email@domain.com
-description: "A blog."
+description: "A System-on-Chip Design & Verification Project."
 
 # Build settings
 remote_theme: jekyll/minima
