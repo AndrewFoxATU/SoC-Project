@@ -33,7 +33,9 @@ Total pixels per frame = 800 (horizontal total) x 525 (vertical total) = 420,0
 Pixel clock = 420,000 x 60 Hz =25,200,000Hz = 25.2 MHz
 ```
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/clock.png">
+
 ### **Simulation**
+
 I simulated the provided template using the supplied Verilog testbench. The simulation outputs matched the expected timing sequences confirming the integrity of the design and that it was ready for synthesis.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/firstsim.png">
@@ -87,8 +89,8 @@ end
 
 ```
 
-
 ### **Simulation**
+
 The updated design was simulated using the provided testbench. The waveform confirmed a smooth transitions between all 12 colours validating the changes I made to the state machine. Debugging during this phase ensured that the design was error-free before proceeding to synthesis.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/simulation.png">
