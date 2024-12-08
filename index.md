@@ -14,7 +14,7 @@ The project began with setting up Vivado and configuring the Basys3 development 
 While using `C:\Temp` I had to keep in mind that this directory might get wiped each week so uploading the changed code back to OneDrive each week was necessary.
 
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/overview1.png">
-The provided template code included VGA timing logic for a 640x480 resolution display and a testbench for initial verification of the design. This provided a solid foundation for development.
+The provided template code included VGA timing logic for a 640x480 resolution display and a testbench for initial verification of the design. This provided a solid foundation for further development.
 
 ### **Template Code**
 The template code was a simple colour cycle that showed 8 different colours one after another on the VGA display. It used a state machine implemented in Verilog with each state representing a specific colour. The RGB values for these colours were predefined in the code.
@@ -59,7 +59,7 @@ I began by adding a new colour **GREY** to the existing colour cycle. During thi
 ```verilog
 parameter Bright_Red = 0, Vermilion = 1, Orange_Red = 2, Bright_Orange = 3, Golden_Orange = 4, Mustard_Yellow = 5, Goldenrod = 6, Olive_Green = 7, Lime_Yellow = 8, Bright_Lime_Green = 9, Electric_Green = 10, Pure_Green = 11;
 ```
-Each colour smoothly transitions from one shade to the next creating a visually appealing gradient. This allowed me to learn how to work with parameters in Verilog to manage complex designs.
+Each colour smoothly transitions from one shade to the next creating a visually appealing gradient. This experience helped me learn how to work with parameters in Verilog to manage complex designs.
 
 My initial attempt at creating a 12 colour cycle revealed a problem: the design would reset after the 8th colour each time. After debugging I realized that the state register was only 2 bits wide allowing for only 8 states. To fix this I expanded the register to 3 bits (`reg[3:0] state, state_next;`) which allowed for up to 12 states. This change successfully enabled a full 12-colour cycle without resets.
 
@@ -96,7 +96,7 @@ The updated design was simulated using the provided testbench. The waveform conf
 ### **Synthesis**
 
 Synthesising the modified design involved generating a new bitstream for the Basys3 board. The synthesis process ran successfully and I implemented the design onto the hardware. The extended 12-colour cycle displayed as intended.
-As the (`vgaBLUE`) is not used in my design it is cut off from the rest of the Schematic
+Since (`vgaBLUE`) is not used in my design it is cut off from the rest of the Schematic
 <img src="https://raw.githubusercontent.com/AndrewFoxATU/SoC-Project/main/docs/assets/images/schematic.png">
 
 ### **Demonstration**
